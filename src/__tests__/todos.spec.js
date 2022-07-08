@@ -96,16 +96,16 @@ describe('Todos', () => {
     const getAllTodosResponse = await request(app)
       .get((`/todos/`))
       .set('username', userResponse.body.username);
-    
+
     expect(
       getAllTodosResponse.body.find(
-        (todo)=>todo.id === todoResponse.body.id
+        (todo) => todo.id === todoResponse.body.id
       ))
-    .toMatchObject({
-      title: 'update title',
-      deadline: todoDate.toISOString(),
-      done: false
-    });
+      .toMatchObject({
+        title: 'update title',
+        deadline: todoDate.toISOString(),
+        done: false
+      });
   });
 
   it('should not be able to update a non existing todo', async () => {
